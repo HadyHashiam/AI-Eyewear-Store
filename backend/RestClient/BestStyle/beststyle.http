@@ -1,0 +1,7 @@
+
+
+### Post getrundetection to get best style products 
+POST   http://localhost:3000/bestStyle
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+

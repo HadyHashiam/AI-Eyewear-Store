@@ -1,0 +1,112 @@
+### GetAll 
+GET http://localhost:3000/orders
+
+### GetAll 
+GET http://localhost:3000/test-cookie
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+
+
+
+### Create order
+POST http://localhost:3000/checkout
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzgxNDE2MjYsImV4cCI6MTc0NTkxNzYyNn0.V4Y7MrYPm9yboZHk79vGoQREfU8OpeK7eXbIIaQwf1Q
+
+{
+  "title": "AVIATOR OPTICS",
+  "productId": "66c0e7db39208eaa2d383fa0",
+  "cartId": "6799dbf27670e7e6b35dcb85",
+  "price": 22000,
+  "amount": 1,
+  "phone": "01115735774",
+  "image": "https://images2.ray-ban.com//cdn-record-files-pi/04126457-28d0-43b3-899b-ad14002638ba/5601fe26-b28d-4d4c-a4d5-ad1400264cf8/0RX5387__8138__STD__shad__qt.png?impolicy=RB_Product_clone&width=2048&bgc=%23f2f2f2",
+  "username": "Hady Hashim",
+  "quantity": 74,
+  "country": "Egypt",
+  "state": "giza",
+  "city": "giza",
+  "address": "gizagizagizagizagiza",
+  "zip": 1012,
+  "email": "hadyhashim17@gmail.com"
+}
+
+### Get Success
+GET  http://localhost:3000/succes
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+{
+  "name": "Kids’ Rainbow",
+  "productId": "66c0e7db39208eaa2d383ff1",
+  "cartId": "678d9a20dd4d470c7184c10e",
+  "price": 2500,
+  "amount": 2,
+  "phone": "01115735774",
+  "image": "https://images2.ray-ban.com//cdn-record-files-pi/04126457-28d0-43b3-899b-ad14002638ba/5601fe26-b28d-4d4c-a4d5-ad1400264cf8/0RX5387__8138__STD__shad__qt.png?impolicy=RB_Product_clone&width=2048&bgc=%23f2f2f2",
+  "username": "Hady hashim",
+  "quantity": 2,
+  "country": "Egypt",
+  "state": "giza",
+  "zip": 1012,
+  "email": "hadyhashim17@gmail.com"
+
+}
+
+
+
+### UpdateOne
+PATCH  http://localhost:3000/product/678c698ad165d3c26dd20ba7
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+{ 
+  "name": "Iphone 13 Pro max "
+}
+
+
+
+
+### DeleteONE 
+DELETE  http://localhost:3000/product/678c69afd165d3c26dd20bb0
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// GetAll With Express.js
+### Get REQUEST
+GET http://localhost:3000/product/express
+name: hady
+age:24
+
+// Create With Express.js
+### GET REQUEST
+POST  http://localhost:3000/product/express
+Content-Type: application/json
+Authorization:  Bearer 
+
+{
+  "title": "Product88",
+  "price": "80880"
+}

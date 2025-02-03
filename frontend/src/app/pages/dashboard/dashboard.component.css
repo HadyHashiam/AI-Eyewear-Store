@@ -1,0 +1,31 @@
+
+body {
+  background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* تأكيد أن الـ body يغطي كامل ارتفاع الصفحة */
+  display: flex;
+  flex-direction: row; /* تقسيم الصفحة إلى عمودين: الشريط الجانبي والمحتوى */
+}
+
+
+/* تفعيل كامل ارتفاع الصفحة للمحتوى الرئيسي */
+.main-content {
+  margin-left: 250px; /* ترك مساحة مع الشريط الجانبي */
+  padding: 30px;
+  height: 100vh; /* تأكيد أن المحتوى يملأ كامل الشاشة */
+  overflow-y: auto; /* السماح بالتمرير في المحتوى */
+  width: calc(100% - 250px); /* عرض المحتوى بعد تخصيص مساحة للشريط الجانبي */
+  box-sizing: border-box;
+}
+
+
+.row{
+  width:100%;
+
+}
+
+
+

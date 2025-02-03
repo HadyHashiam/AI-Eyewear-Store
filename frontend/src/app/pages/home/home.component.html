@@ -1,0 +1,131 @@
+<body>
+  <!-- partial -->
+  <div class="header style list">
+    <nav class="navbar navbar-expand-lg second-nav">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#newArrivals">new arrivals</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"> Sunglasses </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li>
+                  <a class="dropdown-item" href="#menSunglasses">Men</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#womenSunglasses">Women</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#kids">Kids</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"> Eyeglasses </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li>
+                  <a class="dropdown-item" href="#menEyeglasses">Men</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#womenEyeglasses">Women</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#kids">Kids</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/virtualTryOn']">virtual-try-on</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <main>
+
+
+    <h3 class="categorie">New Arrivals</h3>
+    <div class="image-cards">
+      <div class="image-card">
+        <img
+          src="https://media.ray-ban.com/cms/resource/image/968972/portrait_ratio1x1/652/652/da591747ffd0946cc6e7dbb48a4ecbb/3E5940BBA124B1EFE333015EC9ED6FF3/rb-plp-round-eye.jpg"
+          alt="Image Description" />
+        <div class="card-content">
+          <h2>The round since 1999</h2>
+          <p>The style of those who dare to dream</p>
+          <a href="#">Read More</a>
+        </div>
+      </div>
+      <div id="newArrivals" class="image-card">
+        <img
+          src="https://media.ray-ban.com/cms/resource/image/968818/portrait_ratio1x1/652/652/e319d04a830dad1cb177a497c8e10263/86B0E3513D2EA6D548396DD4903FE3E5/rb-plp-aviator-sun.jpg" />
+        <div class="card-content">
+          <h2>THE AVIATOR. SINCE 1937.</h2>
+          <p>The hero of American style</p>
+          <a href="#">Read More</a>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <hr />
+    <div class="search-container">
+      <form class="d-flex">
+        <input id="searchInput" name="searchInput" class="form-control me-2" type="search" placeholder="Search Eyewear"
+          aria-label="Search" style="border-radius: 15px" />
+        <div id="products">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+      </form>
+    </div>
+    <br /><br /><br />
+    <!-- Men Eyeglasss  -->
+    <!--  products  -->
+    <div *ngIf="products.length === 0" class="alert alert-danger">
+      لا توجد منتجات
+    </div>
+
+    <div *ngFor="let category of categories">
+      <h3 class="categorie">{{ category.name }}</h3>
+      <div class="items-container">
+        <div *ngFor="let product of getProductsByCategory(category.name)">
+          <div class="card-1 card">
+            <h4 class="product-title">{{ product.title }}</h4>
+            <img class="product-image" [src]="product.image" alt="product image" />
+            <div class="product-details">
+              <button class="view-button">View&nbsp;&nbsp;<i class="fa-solid fa-eye"></i></button>
+            </div>
+            <div class="favorite">
+              <button class="add-to-favorites" (click)="toggleFavorite(product)">
+                <i class="fa-solid fa-heart"
+                  [ngClass]="{'favorite': product.isFavorite, 'not-favorite': !product.isFavorite}"
+                  [style.color]="product.isFavorite ? 'red' : '#8a8a8a'"></i>
+              </button>
+            </div>
+            <button *ngIf="product.Quantity <= 0" class="add-to-cart" [ngStyle]="{ 'background-color': '#ec4f7e' }"
+              disabled>Out of Stock</button>
+            <button *ngIf="product.isInCart" class="add-to-cart" [ngStyle]="{ 'background-color': '#0000FF' }"
+              disabled>Added</button>
+            <button *ngIf="product.Quantity > 0 && !product.isInCart" class="add-to-cart"
+              (click)="addToCart(product)">Add
+              to Cart</button>
+            <span class="product-price">{{ product.price }}</span>
+            <input type="hidden" name="productId" [value]="product._id">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+
+</body>

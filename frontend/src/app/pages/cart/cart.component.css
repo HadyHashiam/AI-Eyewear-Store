@@ -1,0 +1,154 @@
+body {
+  background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+
+}
+
+
+   .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    .product-table th,
+    .product-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    .product-table th {
+      background-color: #4C868F;
+    }
+  
+    .product-actions form {
+      display: flex;
+      gap: 5px;
+    }
+  
+    .product-actions form button {
+      flex: 1;
+    }
+
+
+
+@media (max-width: 1000px) {
+  .cart-modal {
+    width: 100vw;
+  }
+
+  .product-row {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .remove-btn {
+    margin: 0
+  }
+
+  .product-quantity {
+    margin: .5em 0 .5em 0
+  }
+}
+
+
+/* Define slideIn animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .items-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* One column */
+    grid-auto-rows: minmax(100px, auto);
+    /* Automatically adjust row height */
+    gap: 20px;
+    /* Gap between grid items */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .items-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* One column */
+    grid-auto-rows: minmax(100px, auto);
+    /* Automatically adjust row height */
+    gap: 20px;
+    /* Gap between grid items */
+  }
+
+  .image-cards {
+    display: grid;
+  }
+}
+
+
+
+
+
+
+/* footer */
+
+
+
+/* responsive for mobile phones */
+@media only screen and (max-width: 768px) {
+
+  .custom-card {
+    background: rgba(190, 190, 190, 0.8);
+    /* Use an RGBA value for a transparent white background */
+    border: 2px solid #3498db;
+    /* Add a border with a cool blue color */
+    border-radius: 10px;
+    /* Add rounded corners */
+    font-size: 10px;
+    position: relative;
+    height: 650px;
+
+    right: 20px;
+  }
+
+
+
+  .copyrights {
+    position: relative;
+    left: 20px;
+  }
+
+}
+
+
+/* *
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+**/
+ 

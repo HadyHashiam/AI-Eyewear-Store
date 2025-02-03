@@ -1,0 +1,39 @@
+.sidebar {
+ position: fixed; 
+  height: 100vh; 
+  background: linear-gradient(to bottom, #1A1C1D, #2D3031);
+  color: #fff;
+  padding-top: 25px;
+  z-index: 1; /* تأكد أن الشريط الجانبي في الأعلى */
+  overflow-y: auto; /* السماح للتمرير إذا كانت القائمة طويلة */
+  left: 0;
+    transition: all 0.3s ease-in-out; /* إضافة تأثير انتقال عند التمرير */
+
+}
+.sidebar h2 {
+  font-size: 1.6rem;
+  margin-bottom: 35px;
+}
+
+.sidebar .nav-link {
+  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  border-radius: 6px;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #495057;
+  transform: translateX(5px);
+}
+
+.sidebar .active {
+  background-color: #495057;
+}
+
+.row {
+  display: flex;
+  height: 100vh; /* يجعل الصف يحتوي على الشريط الجانبي والمحتوى */
+  margin: 0;
+}

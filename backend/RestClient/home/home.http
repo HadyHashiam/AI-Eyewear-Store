@@ -1,0 +1,12 @@
+
+
+### GET homre
+GET   http://localhost:3000/home
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3Mzc5NjQ2MzIsImV4cCI6MTc0NTc0MDYzMn0.8vIqqL5BYkB3Hg6SS5mbcyj5kYo4QT8Ol2KpBAVF2qM
+
+
+
+### GET ALL  carts for admin
+GET   http://localhost:3000/home/product
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3Mzc5NjQ2MzIsImV4cCI6MTc0NTc0MDYzMn0.8vIqqL5BYkB3Hg6SS5mbcyj5kYo4QT8Ol2KpBAVF2qM

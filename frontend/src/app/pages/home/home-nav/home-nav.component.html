@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1d5c63">
+
+  <div class="container-fluid">
+    <a style="color: #e4e4d0" class="navbar-brand" href="#">
+      <i class="fa-solid fa-glasses fa-lg" style="color: #e4e4d0"></i> Iglass</a>
+    <div id="line"></div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/aboutUs']">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contactUs']">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard">add product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="orders ">Manage Order</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href='logout' id="navbarScrollingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false"> More </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/logout']">Log out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div id="favoritesIcon">
+      <i class="fa fa-heart icon" style="color: #f2ead3"></i>
+    </div>
+  </div>
+  <div class="cart-btn">
+    <i id="cart" class="fa-solid fa-cart-shopping" style="color: #f2ead3"></i>
+    <span class="cart-quantity">0</span>
+  </div>
+</nav>
+
+<div class="favorites-container" style="display: none">
+  <h2>Favorites:</h2>
+  <ul id="favoritesList">
+    <!-- Favorites will be dynamically added here -->
+  </ul>
+</div>

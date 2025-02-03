@@ -1,0 +1,59 @@
+### GET ALL  carts for admin
+GET   http://localhost:3000/users/678c662b46c4344b2501aceb/cart
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+### GET
+GET   http://localhost:3000/cart
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+
+### CREATE ONE 
+POST   http://localhost:3000/cart
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+{
+  "name": "AVIATOR OPTICS",
+  "image":"https://images2.ray-ban.com//cdn-record-files-pi/04126457-28d0-43b3-899b-ad14002638ba/5601fe26-b28d-4d4c-a4d5-ad1400264cf8/0RX5387__8138__STD__shad__qt.png?impolicy=RB_Product_clone&width=2048&bgc=%23f2f2f2",
+  "price": 22000,
+  "amount":1,
+  "productId":"66c0e7db39208eaa2d383fa0"
+}
+
+
+
+
+
+### find One (user cart) for admin
+GET   http://localhost:3000/cart/678c6f467cad03d0bb2c7471
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+### UPDATE One
+PATCH    http://localhost:3000/cart/save
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+{
+  "cartId":"6798f848accc30d2d6da2fa3",
+  "amount":5
+}
+
+
+### DELETE One
+DELETE     http://localhost:3000/cart/delete
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+{
+  "cartId":"678c6e9d3b8ec4c3d0352305"
+}

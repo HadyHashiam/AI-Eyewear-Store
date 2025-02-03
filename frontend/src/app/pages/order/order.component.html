@@ -1,0 +1,47 @@
+<body>
+  <!-- Navigation bar -->
+  <div class="d-flex justify-content-start align-items-upper p-2 vh-100">
+      <!-- Error message -->
+    <div class="container ">
+      <!-- Error message -->
+      <div *ngIf="items.length === 0" class="alert alert-danger">
+        There are no items in the cart.
+      </div>
+      <table class="table table-bordered" *ngIf="items.length > 0">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product name</th>
+            <th scope="col">total</th>
+            <th scope="col">Address</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}</td>
+            
+            <td>{{ item.title }}</td>
+
+            <td>{{ item.total }} $</td>
+
+            <td>{{ item.address }} </td>
+
+            <td>{{ item.status }}</td>
+
+            <td>
+              <button class="btn btn-danger" (click)="cancelOrder(item._id)">
+                Delete
+              </button>
+            </td>
+
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>

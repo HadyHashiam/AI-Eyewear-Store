@@ -1,0 +1,96 @@
+### GetAll 
+GET http://localhost:3000/product
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+### apply fetures
+GET http://localhost:3000/product?price[gt]=22000
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+### apply fetures
+GET http://localhost:3000/product?keyword=AVIATOR  
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+
+
+### GetOne 
+GET http://localhost:3000/product/678c698ad165d3c26dd20ba7
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+### CreateOne
+POST  http://localhost:3000/product
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+{
+  "code": "1236",
+  "title": "The best Gaming laptop in the world",
+  "price": 1088,
+  "image": "images2.jpg",
+  "description": " a modern urban design, these frames combine style",
+  "images": "images12jpg",
+  "quantity": 10,
+  "category": "Men Eye Glasses",
+  "face_shape": ["Square", "Oblong", "Heart"]
+
+  }
+
+
+
+
+### UpdateOne
+PATCH  http://localhost:3000/product/678c698ad165d3c26dd20ba7
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+{ 
+  "name": "Iphone 13 Pro max "
+}
+
+
+
+
+### DeleteONE 
+DELETE  http://localhost:3000/product/678c69afd165d3c26dd20bb0
+Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzhjNjYyYjQ2YzQzNDRiMjUwMWFjZWIiLCJpYXQiOjE3MzcyNTUyODgsImV4cCI6MTc0NTAzMTI4OH0.PsuoMR8CYxXs-Fcuo0HAVjayIdprVdbYAL4w2-n98S0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// GetAll With Express.js
+### Get REQUEST
+GET http://localhost:3000/product/express
+name: hady
+age:24
+
+// Create With Express.js
+### GET REQUEST
+POST  http://localhost:3000/product/express
+Content-Type: application/json
+Authorization:  Bearer 
+
+{
+  "title": "Product88",
+  "price": "80880"
+}

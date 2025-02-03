@@ -1,0 +1,14 @@
+<body>
+  <!-- Navbar ثابت -->
+
+  <app-navbar *ngIf="showNavbar === 'welcome'"></app-navbar>
+  <app-home-nav *ngIf="showNavbar === 'home'"></app-home-nav>
+  <app-home-nav *ngIf="showNavbar === 'default'"></app-home-nav>
+  <app-contact-nav *ngIf="showNavbar === 'contactUs'"></app-contact-nav>
+
+  <!-- محتوى الصفحات -->
+  <router-outlet></router-outlet>
+
+  <!-- Footer ثابت -->
+  <app-footer *ngIf="showFooter"></app-footer>
+</body>

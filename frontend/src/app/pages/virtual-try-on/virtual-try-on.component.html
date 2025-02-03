@@ -1,0 +1,65 @@
+<body>
+
+<!-- Navigation bar (2) -->
+<div class="header style list">
+  <nav class="navbar navbar-expand-lg second-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home">Explore Eyewear</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="virtualTryOn"><b> virtual-try-on</b>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Navigation bar (2) -->
+
+<!-- ************************section 1 **************************-->
+<div class="start">
+  <img src="/assets/images/virtual1.png" alt="11" />
+  <h1>virtual-try-on</h1>
+  <p>
+    you can seamlessly try on your favorite pairs of designer sunglasses and
+    eyeglasses in few simple steps the comfort of your home.feel free to
+    experiment with as many styles as you like using our virtual glasses
+    tool!
+  </p>
+  <div class="work">
+    <img src="/assets/images/VIRTUAL-WORK.png" alt="how work" />
+  </div>
+
+  <!--------------------------- end section 1 ---------------------------------->
+  <!--------------------------- start section 2 ---------------------------------->
+
+  <div class="upload-container d-flex">
+    <img src="/assets/images/gender1.png" alt="" />
+
+    <span>
+    <button id="runDetection" class="upload-btn" (click)="postRunDetection()">
+      Open Photo
+    </button>
+
+
+      <input id="file-upload" class="file-input" type="file" />
+      <div class="file-label" id="file-label">No file chosen</div>
+    </span>
+  </div>
+</div>
+
+<!--      OPEN CAMERA      -->
+<div class="open">
+
+</div>
+</body>

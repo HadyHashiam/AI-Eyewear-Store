@@ -1,0 +1,82 @@
+<body>
+        <div class="container v-4">
+
+    <h2 class="text-center">Your Best Style is : {{receivedData.classId}}</h2>
+    <!-- قسم المنتجات الرجالية -->
+    <div class="text-center mt-4">
+      <h3>Men's Products</h3>
+      <div class="row">
+        <!-- تكرار المنتجات الخاصة بالرجال -->
+        <div class="col-md-4" *ngFor="let product of receivedData?.products">
+          <div *ngIf="isMenProduct(product)" class="card mb-4">
+            <img [src]="product.image" class="card-img-top" [alt]="product.name" />
+
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">Price: ${{ product.price }}</p>
+
+              <!-- زر الإضافة إلى السلة -->
+              <button class="btn btn-success me-2" [class.disabled]="product.isInCart" (click)="addToCart(product)">
+                {{ product.isInCart ? 'Added to Cart' : 'Add to Cart' }}
+              </button>
+
+              <!-- زر الإضافة إلى المفضلة -->
+              <button class="btn btn-outline-danger" [class.active]="product.isFavorite"
+                (click)="toggleFavorite(product)">
+                <i class="fas" [class.fa-heart]="product.isFavorite" [class.fa-heart-o]="!product.isFavorite"></i>
+                {{ product.isFavorite ? 'Favorited' : 'Add to Favorites' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- أزرار الفلاتر على سناب شات للرجال والنساء -->
+    <div class="text-center mt-4">
+      <a *ngIf="receivedData?.hrefButtonForMen" [href]="receivedData.hrefButtonForMen" target="_blank"
+        class="btn btn-primary me-2">
+        Try Men's Style
+      </a>
+    </div>
+    <!-- قسم المنتجات النسائية -->
+    <div class="text-center mt-4">
+      <h3>Women's Products</h3>
+      <div class="row">
+        <!-- تكرار المنتجات الخاصة بالنساء -->
+        <div class="col-md-4" *ngFor="let product of receivedData?.products">
+          <div *ngIf="isWomenProduct(product)" class="card mb-4">
+            <img [src]="product.image" class="card-img-top" [alt]="product.name" />
+
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">Price: ${{ product.price }}</p>
+
+              <!-- زر الإضافة إلى السلة -->
+              <button class="btn btn-success me-2" [class.disabled]="product.isInCart" (click)="addToCart(product)">
+                {{ product.isInCart ? 'Added to Cart' : 'Add to Cart' }}
+              </button>
+
+              <!-- زر الإضافة إلى المفضلة -->
+              <button class="btn btn-outline-danger" [class.active]="product.isFavorite"
+                (click)="toggleFavorite(product)">
+                <i class="fas" [class.fa-heart]="product.isFavorite" [class.fa-heart-o]="!product.isFavorite"></i>
+                {{ product.isFavorite ? 'Favorited' : 'Add to Favorites' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- أزرار الفلاتر على سناب شات للرجال والنساء -->
+    <div class="text-center mt-4">
+      <a *ngIf="receivedData?.hrefButtonForWomen" [href]="receivedData.hrefButtonForWomen" target="_blank"
+        class="btn btn-warning">
+        Try Women's Style
+      </a>
+    </div>
+    <br><br>
+
+      </div>
+
+</body>

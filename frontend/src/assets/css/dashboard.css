@@ -1,0 +1,103 @@
+/* dashboard.css */
+
+/* Body Styles */
+body {
+  font-family: "Righteous", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  height: 100vh;
+  padding-top: 20px;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.sidebar .nav-link {
+  color: #fff;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+/* Main Content Styles */
+.main-content {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 0;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styles */
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.product-actions form button {
+  flex: 1;
+  border-radius: 0;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.product-actions form button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+  }
+
+  .main-content {
+    margin-top: 20px;
+  }
+}

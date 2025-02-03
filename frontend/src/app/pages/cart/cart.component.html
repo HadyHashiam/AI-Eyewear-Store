@@ -1,0 +1,46 @@
+<body>
+  <!-- Navigation bar -->
+  <div class="d-flex justify-content-start align-items-upper p-2 vh-100">
+    <div class="container">
+      <!-- Error message -->
+      <div *ngIf="items.length === 0" class="alert alert-danger">
+        There are no items in the cart.
+      </div>
+      <!-- Product table -->
+      <table class="product-table" *ngIf="items.length > 0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }} $</td>
+            <td class="product-actions">
+              <form (submit)="saveItem(item._id, item.amount)">
+                <input type="number" name="amount" class="form-control" [(ngModel)]="item.amount" min="1" />
+                <button type="submit" class="btn btn-success btn-save">
+                  Save
+                </button>
+                <a [routerLink]="['/deliveryDetails']"
+                  [queryParams]="{ cartId: item._id, price: item.price, name: item.name, amount: item.amount , image: item.image ,productId: item.productId}"
+                  class="btn btn-primary btn-order">
+                  Verify Order
+                </a>
+                <button class="btn btn-danger" (click)="deleteItem(item._id)">
+                  Delete
+                </button>
+              </form>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
