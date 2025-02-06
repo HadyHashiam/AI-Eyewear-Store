@@ -43,8 +43,18 @@
 ---
 
 ## **📂 Project Structure**
-Iglass/ ├── frontend/ # Angular frontend ├── backend/ │ ├── controllers/ │ ├── models/ │ ├── routes/ │ ├── utils/ │ ├── server.js # Main backend server file │ └── config/ ├── ai-model/ # YOLOv8 and Python scripts for face shape detection ├── public/ # Static files └── README.md
-
+Iglass/
+├── frontend/           # Angular frontend
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── server.js       # Main backend server file
+│   └── config/
+├── ai-model/           # YOLOv8 and Python scripts for face shape detection
+├── public/             # Static files
+└── README.md
 
 ---
 
