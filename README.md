@@ -41,6 +41,12 @@
 - **Snapchat Lens Studio** for augmented reality experiences
 
 ---
+### Prerequisites
+
+- Node.js >= 16.x
+- Python >= 3.12.0 (64-bit)
+- MongoDB (for local development)
+---
 
 ## **📂 Project Structure**
 Iglass/
@@ -64,21 +70,21 @@ Iglass/
 - **Node.js** (v16+)
 - **MongoDB** (running locally or via MongoDB Atlas)
 - **Python 3.12.0 64-bit** (for AI model integration)
-
+---
 ### **1. Clone the Repository:**
 
 ```bash
 git clone https://github.com/your-username/Iglass.git
 cd Iglass
 ```
-
+---
 # Install backend dependencies
 npm install
-
+---
 # Navigate to frontend and install dependencies
 cd frontend
 npm install
-
+---
 
 ## **Configure Environment Variables**
 
@@ -87,19 +93,19 @@ JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
-
+---
 ## **Run the Applications**
 
 # Start the backend server
 npm run start:dev
-
+---
 # In another terminal, navigate to the frontend folder
 cd frontend
 ng serve
-
+---
 ## ** AI Model Integration**
 The AI model for face shape detection is built using YOLOv8 and OpenCV.
-
+---
 Running the AI Model:
 1-Ensure Python 3.12.0 64-bit is installed.
 2-Install the required Python libraries:
