@@ -38,7 +38,7 @@ exports.GetALLProducts = asyncHandler(async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    next(new ApiError('Failed to retrieve home data', 500));
+    next(new ApiError(`Failed to retrieve Products data ${err}`, 500));
   }
 });
 
@@ -85,7 +85,7 @@ exports.getHomeWithCart = asyncHandler(async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    next(new ApiError('Failed to retrieve home data', 500));
+    next(new ApiError(`Failed to retrieve home data ${err}`, 500));
   }
 });
 

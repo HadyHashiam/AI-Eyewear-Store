@@ -451,84 +451,8 @@ img {
   cursor: pointer;
 }
 
-/* Product Details Content */
-#productDetailsContent {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#productDetailsContent img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  /* Drop shadow effect */
-}
-
-.product-title {
-  color: rgb(104, 104, 104);
-  font-size: 30px;
-}
-
-/* Styling for the View button */
-.view-button {
-  background-color: #4CAF50;
-  /* Green background */
-  border: none;
-  color: white;
-  /* White text */
-  padding: 10px 20px;
-  /* Padding */
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
-  /* Add margin to separate from other elements */
-  border-radius: 5px;
-  /* Rounded corners */
-  cursor: pointer;
-  /* Cursor style */
-  transition: background-color 0.3s;
-  /* Smooth transition for background color */
-}
-
-/* Hover effect */
-.view-button:hover {
-  background-color: #45a049;
-  /* Darker green background on hover */
-}
-
-/* Icon style */
-.view-button i {
-  margin-left: 5px;
-  /* Add some space between text and icon */
-}
 
 
-
-/* categorie text animation */
-.categorie {
-  position: relative;
-  top: 10px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #dfe0e1;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-}
-
-
-/* CSS for animating product cards */
-.items-container .card {
-  opacity: 0;
-  transform: translateX(-100%);
-  animation: slideIn 1s forwards ease-out;
-}
 
 /* Define slideIn animation */
 @keyframes slideIn {
@@ -558,51 +482,6 @@ img {
 }
 
 
-.image-cards {
-  display: flex;
-  background-image: linear-gradient(to right, #2c3e50, #4ca1af);
-}
-
-
-
-.image-card {
-  max-width: 600px;
-  /* Adjust the max width as needed */
-  margin: 20px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  animation: slideInFromLeft 1.5s ease forwards;
-
-}
-
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  margin-left: 30px;
-}
-
-#searchInput {
-  border-radius: 15px;
-  /* Rounded corners */
-  padding: 10px;
-  /* Padding around the input */
-  width: 500px;
-  /* Set the width of the input */
-  border: 1px solid #ced4da;
-  /* Border color */
-}
-
-#products {
-  margin-top: 10px;
-  /* Add some space between search bar and products */
-}
-
-.card {
-  margin-bottom: 10px;
-  /* Add some space between product cards */
-}
 
 
 @keyframes slideInFromLeft {
@@ -617,67 +496,6 @@ img {
   }
 }
 
-.image-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-content {
-  color: white;
-  padding: 20px;
-  background-color: #000000;
-}
-
-.card-content h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.card-content p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.card-content a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.card-content a:hover {
-  background-color: #555;
-}
-
-.favorite {
-  text-align: center;
-  padding-top: 9px;
-}
-
-.add-to-favorites {
-  width: 60px;
-  text-align: center;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Define the red color for the heart icon */
-.red-heart {
-  color: red;
-}
-
-/* Define a transition effect for color change */
-.red-heart-transition {
-  transition: color 0.5s ease;
-  /* Adjust the duration and timing function as needed */
-}
 
 
 @keyframes slideInFromLeft {
@@ -727,128 +545,6 @@ img {
 
 
 
-
-
-
-[class^=swiper-button-] {
-  transition: all 0.3s ease;
-}
-
-.swiper-slide {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.swiper-container {
-  width: 80%;
-  height: 100vh;
-  float: left;
-  transition: opacity 0.6s ease, transform 0.3s ease;
-}
-
-.swiper-container.nav-slider {
-  width: 20%;
-  padding-left: 5px;
-}
-
-.swiper-container.nav-slider .swiper-slide {
-  cursor: pointer;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.swiper-container.nav-slider .swiper-slide.swiper-slide-active {
-  opacity: 1;
-}
-
-.swiper-container.nav-slider .swiper-slide .content {
-  width: 100%;
-}
-
-.swiper-container.nav-slider .swiper-slide .content .title {
-  font-size: 20px;
-}
-
-.swiper-container:hover .swiper-button-prev,
-.swiper-container:hover .swiper-button-next {
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.swiper-container.loading {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.swiper-slide {
-  overflow: hidden;
-}
-
-.swiper-slide .slide-bgimg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-}
-
-.swiper-slide .entity-img {
-  display: none;
-}
-
-.swiper-slide .content {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 50%;
-  padding-left: 5%;
-  color: #fff;
-}
-
-.swiper-slide .content .title {
-  font-size: 2.6em;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.swiper-slide .content .caption {
-  display: block;
-  font-size: 13px;
-  line-height: 1.4;
-  transform: translateX(50px);
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.7s ease;
-}
-
-.swiper-slide .content .caption.show {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-[class^=swiper-button-] {
-  width: 44px;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.swiper-button-prev {
-  transform: translateX(50px);
-}
-
-.swiper-button-next {
-  transform: translateX(-50px);
-}
 
 /* Modal styles */
 .modal {
@@ -994,12 +690,7 @@ img {
 
 
 
-/* footer */
-.social-icons {
-  display: flex;
-  justify-content: end;
 
-}
 
 .social-icon {
   display: flex;
@@ -1068,14 +759,7 @@ img {
   }
 }
 
-.footer {
-  font-size: 23px;
-  display: flex;
-  gap: 50px;
-  justify-content: center;
-}
 
-/* footer */
 
 
 

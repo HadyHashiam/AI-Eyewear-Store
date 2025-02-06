@@ -9,23 +9,23 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Iglass'; // العنوان الافتراضي
-  showNavbar = 'default'; // تحديد نوع الـ Navbar الافتراضي
-  showFooter = true; // عرض الـ Footer في جميع الصفحات
+  title = 'Iglass'; // default title
+  showNavbar = 'default'; 
+  showFooter = true; 
 
   constructor(private router: Router, private titleService: Title) {
     this.setTitle();
-    // تعيين العنوان عند تغيير المسار
+    // change title to default when navigation changes
     this.router.events
     .pipe(filter((event) => event instanceof NavigationEnd))
     .subscribe(() => {
       this.setTitle();
-      this.toggleNavbarFooter(); // تغيير الـ Navbar و الـ Footer بناءً على المسار
+      this.toggleNavbarFooter(); // change navbar and footer when navigation changes
     });
   }
 
   private setTitle() {
-    const currentRoute = this.router.routerState.root.firstChild; // استخدم routerState لجلب المسار الحالي
+    const currentRoute = this.router.routerState.root.firstChild; // use  routerState to get current route
     const title = currentRoute?.snapshot.data['title'] || this.title; 
     
     this.titleService.setTitle(title); 

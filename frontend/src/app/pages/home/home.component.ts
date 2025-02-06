@@ -27,14 +27,14 @@ export class HomeComponent implements OnInit {
     { name: 'Women Sun Glasses' },
     { name: 'Kids Glasses' },
   ];
-  title: string = 'Home '; // قم بتحديد العنوان الافتراضي هنا
+  title: string = 'Home '; 
   constructor(
     private titleService: Title,
     private homeService: HomeService,
     private cartService: CartService,
     private favoritesService: FavoritesService
   ) {
-    this.titleService.setTitle(this.title); // تعيين عنوان الصفحة
+    this.titleService.setTitle(this.title); // set title
   }
   ngOnInit(): void {
     this.loadHomeData();
@@ -55,9 +55,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  // addToCart(product: any): void {
-  //   // logic for adding the product to the cart
-  // }
+
 
   addToCart(product: any): void {
     if (product.isInCart) return;
@@ -83,7 +81,7 @@ export class HomeComponent implements OnInit {
       this.favoritesService.deleteFavItem(product._id).subscribe({
         next: (response) => {
           console.log('Item removed from favorites successfully');
-          product.isFavorite = false; // تعديل الحالة على الواجهة الأمامية مباشرة
+          product.isFavorite = false; // update favorites status on front end immediately
         },
         error: (error) => {
           console.error('Failed to remove item from favorites:', error);
@@ -100,7 +98,7 @@ export class HomeComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log('Item added to favorites successfully');
-          product.isFavorite = true; // تعديل الحالة على الواجهة الأمامية مباشرة
+          product.isFavorite = true; // Modify the state on the front end directly
         },
         error: (error) => {
           console.error('Failed to add item to favorites:', error);

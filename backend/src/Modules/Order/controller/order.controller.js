@@ -16,9 +16,107 @@ const getUserIdFromToken = (req) => {
     // console.log("\nDecoded Token:", decoded);
     return decoded.userId;
   } catch (err) {
-    throw new ApiError('Invalid token', 401);
+    throw new ApiError(`Invalid token${err}`, 401);
   }
 };
+
+
+exports.postCheckout = asyncHandler(async (req, res, next) => {
+  try {
+    const orderItemData = req.body;
+    const userId = getUserIdFromToken(req);
+
+    const newOrder = new Order({
+      ...orderItemData,
+      userId: userId,
+      total: orderItemData.amount * orderItemData.price,
+      status: "pending"
+    });
+    await newOrder.save();
+
+    const metadata = {
+      product_id: orderItemData.productId,
+      cart_id: orderItemData.cartId,
+      userId: getUserIdFromToken(req),
+      order_id: newOrder._id.toString()
+    };
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: orderItemData.title,
+            },
+            unit_amount: orderItemData.price * 100,
+          },
+          quantity: orderItemData.amount,
+        },
+      ],
+      mode: 'payment',
+      metadata: metadata,
+      success_url: `${process.env.success_url}`,
+      cancel_url: `${process.env.cancel_url}`,
+    });
+
+    res.status(200).json({ data: orderItemData, url: session.url });
+  } catch (err) {
+    return next(new ApiError(`Error processing payment ${err}`, 500));
+  }
+});
+
+
+
+exports.handleWebhook = asyncHandler(async (req, res) => {
+
+  const sig = req.headers['stripe-signature'];
+  let event
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    console.log("Stripe Webhook Event successfully verified:");
+  } catch (err) {
+    console.error("Webhook signature verification failed:", err.message);
+    return next(new ApiError(`Webhook Error: ${err.message}`, 400));
+  }
+
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+
+    const { product_id, cart_id, order_id } = session.metadata;
+    if (product_id) {
+      const order = await handleSessionCompleted(order_id, cart_id, product_id)
+      res.status(200).json({ data: order, received: true });
+    }
+  }
+
+});
+
+const handleSessionCompleted = async (orderId, cart_id, product_id) => {
+  try {
+    const product = await Product.findById(product_id);
+    const order = await Order.findById(orderId);
+
+    if (!order) throw new ApiError('Order not found', 404);
+    if (!product || product.Quantity < order.amount) {
+      return console.error("Insufficient product quantity");
+    } else {
+      product.Quantity -= order.amount;
+      await product.save();
+    }
+
+    await Cart.findByIdAndDelete(cart_id);
+    order.status = "success";
+    await order.save();
+
+    return order;
+  } catch (err) {
+    return next(new ApiError(`Error handling charge.succeeded:${err} `, 404));
+  }
+};
+
 // // Get order details
 exports.getOrderVerify = asyncHandler(async (req, res, next) => {
   try {
@@ -34,92 +132,6 @@ exports.getOrderVerify = asyncHandler(async (req, res, next) => {
   } catch (err) {
     console.error(err);
     return next(new ApiError('Failed to get cart item', 500));
-  }
-});
-
-
-// Get orders by user
-exports.postCheckout = asyncHandler(async (req, res, next) => {
-  const orderItemData = req.body;
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: orderItemData.title,
-            metadata: {
-              product_id: orderItemData.productId,
-              cart_id: orderItemData.cartId
-            }
-          },
-          unit_amount: orderItemData.price * 100 // Stripe expects amount in cents
-        },
-        quantity: orderItemData.amount
-      }
-    ],
-    mode: 'payment',
-    success_url: `${process.env.BASE_URL2}/orders`,
-    cancel_url: `${process.env.BASE_URL2}/error`
-  });
-
-  res.sessionUrl = session.url;
-  res.status(200).json({ data: orderItemData, url: session.url });
-
-});
-
-
-exports.getsucces = asyncHandler(async (req, res, next) => {
-  const orderItemData = req.query;
-  const userId = getUserIdFromToken(req);
-  try {
-    const currentuser = await User.findById(userId);
-    if (!currentuser) {
-      return next(new ApiError('Current user not found', 404));
-    }
-    // Step 1: Check if quantity is sufficient
-    const product = await Product.findById(orderItemData.productId);
-    if (!product || product.Quantity < orderItemData.amount) {
-      return next(new ApiError('Insufficient product quantity', 400));
-    }
-    // Step 2: Deduct quantity from product
-    product.Quantity -= orderItemData.amount;
-    await product.save();
-
-    // Step 3: Delete item from cart
-    await Cart.findByIdAndDelete(orderItemData.cartId);
-    // Step 4: Create a new order
-    orderItemData.timestamp = Date.now();
-    const order = new Order({
-      userId: userId,
-      productId: orderItemData.productId,
-      quantity: orderItemData.amount,
-      status: "success",
-      total: orderItemData.amount * orderItemData.price,
-      ...orderItemData
-    });
-    await order.save();
-    // Step 5: Update user orders
-    await User.updateOne(
-      { _id: userId },
-      {
-        $push: {
-          Order: {
-            product_name: orderItemData.title,
-            product_id: orderItemData.productId
-          }
-        }
-      }
-    );
-    await User.updateOne(
-      { _id: userId },
-      { $pull: { Cart: { product_name: orderItemData.title } } }
-    );
-    res.status(200).json({ data: orderItemData, message: "Order placed successfully" });
-  } catch (err) {
-    console.error(err);
-    return next(new ApiError('Failed to process checkout', 500));
   }
 });
 
@@ -147,7 +159,7 @@ exports.postCancel = asyncHandler(async (req, res, next) => {
     res.status(200).json("Order Canceled successfully")
   } catch (err) {
     console.error(err);
-    return next(new ApiError('Failed to cancel order', 500));
+    return next(new ApiError(`Failed to cancel order ${err}`, 500));
   }
 });
 
@@ -163,7 +175,7 @@ exports.getOrder = asyncHandler(async (req, res, next) => {
     });
   } catch (err) {
     console.error(err);
-    return next(new ApiError('Failed to get orders', 500));
+    return next(new ApiError(`Failed to get orders ${err}`, 500));
   }
 });
 
@@ -175,7 +187,3 @@ exports.getOrder = asyncHandler(async (req, res, next) => {
 //   req.filterObj = filterObject;
 //   next();
 // };
-
-
-
-

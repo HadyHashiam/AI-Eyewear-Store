@@ -1,10 +1,6 @@
-// delivery.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../../services/cart.service'; // افترض وجود خدمة للتعامل مع السلة
-import { OrderService } from '../../services/order.service'; // افترض وجود خدمة لإرسال الطلبات
-import { AuthService } from '../../services/auth.service'; // افترض وجود خدمة للمصادقة
+import { OrderService } from '../../services/order.service'; 
 
 @Component({
   selector: 'app-delivery',
@@ -37,7 +33,7 @@ export class DeliveryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // الحصول على بيانات السلة من الرابط
+    // Get basket data from link
     this.route.queryParams.subscribe((params) => {
       console.log(params);
       this.cartId = params['cartId'];
@@ -50,7 +46,7 @@ export class DeliveryDetailsComponent implements OnInit {
   }
 
   submitDeliveryDetails(): void {
-    // إضافة المنطق لإرسال بيانات الطلب والبيانات الأخرى للـ Backend
+// Add logic to send request data and other data to the backend
     const orderData = {
       cartId: this.cartId,
       price: this.price,
@@ -71,15 +67,15 @@ export class DeliveryDetailsComponent implements OnInit {
     this.orderService.checkout(orderData).subscribe(
       (response) => {
         console.log(response);
-        // إعادة توجيه المستخدم إلى صفحة الدفع
+        // Redirect user to payment page
         window.location.href = response.url;
       },
       (error) => {
         console.error(error);
       }
     );
-    this.orderService.getSuccess(orderData).subscribe((response) => {
-      console.log(response);
-    });
+    console.log('the function is ts that call the API End from angular');
   }
 }
+
+

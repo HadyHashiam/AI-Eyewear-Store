@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // تأكد من استيراد RouterModule
-import { Title } from '@angular/platform-browser'; // استيراد Title
+import { RouterModule } from '@angular/router'; 
+import { Title } from '@angular/platform-browser'; 
 
 @Component({
   selector: 'app-welcome',
@@ -11,8 +11,8 @@ import { Title } from '@angular/platform-browser'; // استيراد Title
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent {
-  title: string = 'welcome '; // قم بتحديد العنوان الافتراضي هنا
+  title: string = 'welcome '; 
   constructor(private titleService: Title) {
-    this.titleService.setTitle(this.title); // تعيين عنوان الصفحة
+    this.titleService.setTitle(this.title); 
   }
 }

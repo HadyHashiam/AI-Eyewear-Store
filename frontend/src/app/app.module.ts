@@ -18,7 +18,6 @@ import { ContactusComponent } from './pages/contactus/contactus.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeNavComponent } from './pages/home/home-nav/home-nav.component';
-import { HomeFooterComponent } from './pages/home/home-footer/home-footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrderComponent } from './pages/order/order.component';
@@ -99,7 +98,6 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     HomeNavComponent,
-    HomeFooterComponent,
     SignupComponent,
     CartComponent,
     OrderComponent,

@@ -7,10 +7,10 @@ import shutil
 from ultralytics import YOLO
 
 # Delete the directory                                                       path the predict file in runs 
-directory_to_delete = pathlib.Path('E:\\Programming\\Back-end\\Node.js\\newbackend\\runs\\detect\\predict')      
+directory_to_delete = pathlib.Path('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\runs\\detect\\predict')      
 shutil.rmtree(directory_to_delete, ignore_errors=True)
 # Load a pretrained YOLO model                                             path the YOLO model                    
-model = YOLO('E:\\Programming\\Back-end\\Node.js\\newbackend\\best.pt')                                           
+model = YOLO('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\best.pt')                                           
 
 def open_camera(callback):
     def on_left_click(event, x, y, flags, param):
@@ -46,7 +46,7 @@ def process_image(image_path):
     results = model(image_path, save=True, save_txt=True)
 
     # Path to the saved txt file                                          path the text file file in runs   /predict /labels
-    txt_path = f'E:\\Programming\\Back-end\\Node.js\\newbackend\\runs\\detect\\predict\\labels\\photo.txt'
+    txt_path = f'E:\\Programming\\Back-end\\Node.js\\final project\\backend\\runs\\detect\\predict\\labels\\photo.txt'
     # Extract class ID from the saved .txt file
     class_id = None
     try:

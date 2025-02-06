@@ -7,12 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
- 
   previewImage: string | ArrayBuffer | null = null;
   currentPage: string = '';
 
   constructor(private router: Router) {}
   ngOnInit() {
-    this.currentPage = this.router.url.split('/')[1]; // استخراج اسم الصفحة الحالية
+    this.currentPage = this.router.url.split('/')[1]; // Extract the name of the current page
   }
 }

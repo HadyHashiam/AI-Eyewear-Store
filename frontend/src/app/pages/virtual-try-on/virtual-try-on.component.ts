@@ -24,7 +24,7 @@ export class VirtualTryOnComponent {
       (response) => {
         console.log('Response:', response);
 
-        // ✅ بعد وصول الريسبونس، انتقل إلى صفحة bestStyle مع تمرير البيانات
+        // Navigation to BestStyle Page after the response received 
         this.router.navigate(['/bestStyle'], { state: { data: response } });
       },
       (error) => {

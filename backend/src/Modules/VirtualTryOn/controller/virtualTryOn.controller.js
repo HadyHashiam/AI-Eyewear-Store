@@ -54,7 +54,7 @@ exports.postRunDetection = asyncHandler(async (req, res, next) => {
     if (code === 0) {
       console.log('Python script executed successfully');
       try {
-        fs.readFile('E:\\Programming\\Back-end\\Node.js\\newbackend\\runs\\detect\\predict\\labels\\photo.txt', 'utf8', (err, data) => {
+        fs.readFile('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\runs\\detect\\predict\\labels\\photo.txt', 'utf8', (err, data) => {
           if (err) {
             console.error('Error reading prediction file:', err);
             return next(new ApiError('Error reading prediction file', 500)); // Send API error

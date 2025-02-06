@@ -84,7 +84,7 @@ exports.createCartItem = asyncHandler(async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    return next(new ApiError('Internal Server Error', 500));
+    return next(new ApiError(`Internal Server Error ${error}`, 500));
   }
 });
 

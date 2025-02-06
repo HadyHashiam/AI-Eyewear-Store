@@ -4,9 +4,7 @@ const ApiError = require('../../../../utils/apiError');
 const Product = require('../../../../models/product.Model');
 const asyncHandler = require('express-async-handler');
 
-
 exports.CreateProduct = handlerFactory.createOne(Product);
-
 
 exports.GetALLProducts = asyncHandler(async (req, res, next) => {
   try {
@@ -21,7 +19,7 @@ exports.GetALLProducts = asyncHandler(async (req, res, next) => {
     });
   } catch (err) {
     console.log(err);
-    next(new ApiError('Failed to retrieve home data', 500));
+    next(new ApiError(`Failed to retrieve home data , ${err} `, 500));
   }
 });
 

@@ -11,7 +11,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent {
   errorMessage: string = '';
 
-  // نموذج التحقق من المدخلات باستخدام FormBuilder
   loginForm;
 
   constructor(
@@ -45,7 +44,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error('Login failed:', error);
-        this.errorMessage = 'البريد الإلكتروني أو كلمة المرور غير صحيحة';
+        this.errorMessage = 'Email or password incorrect ';
       },
     });
   }

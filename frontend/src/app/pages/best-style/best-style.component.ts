@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser'; // استيراد Title
+import {  Router } from '@angular/router';
+import { Title } from '@angular/platform-browser'; 
 import { HomeService } from '../../services/home.service';
 import { CartService } from '../../services/cart.service';
 import { FavoritesService } from '../../services/favorites.service';
@@ -12,7 +12,7 @@ import { FavoritesService } from '../../services/favorites.service';
 })
 export class BestStyleComponent {
   receivedData: any;
-  title: string = 'Best Style'; // قم بتحديد العنوان الافتراضي هنا
+  title: string = 'Best Style';
   categories = [
     { name: 'Men Eye Glasses' },
     { name: 'Men Sun Glasses' },
@@ -27,18 +27,17 @@ export class BestStyleComponent {
     private cartService: CartService,
     private favoritesService: FavoritesService
   ) {
-    this.titleService.setTitle(this.title); // تعيين عنوان الصفحة
+    this.titleService.setTitle(this.title);
     const navigation = this.router.getCurrentNavigation();
     this.receivedData = navigation?.extras.state?.['data'] || null;
   }
 
-  // دالة للتحقق إذا كان المنتج خاصًا بالرجال
-  // دالة للتحقق إذا كان المنتج خاصًا بالرجال بناءً على الفئة
+  // Function to check if the product is for men
   isMenProduct(product: any): boolean {
     return product.category.includes('Men');
   }
 
-  // دالة للتحقق إذا كان المنتج خاصًا بالنساء بناءً على الفئة
+  // Function to check if the product is for women
   isWomenProduct(product: any): boolean {
     return product.category.includes('Women');
   }
@@ -68,7 +67,7 @@ export class BestStyleComponent {
       this.favoritesService.deleteFavItem(product._id).subscribe({
         next: (response) => {
           console.log('Item removed from favorites successfully');
-          product.isFavorite = false; // تعديل الحالة على الواجهة الأمامية مباشرة
+          product.isFavorite = false;  // Modify the state on the front end directly
         },
         error: (error) => {
           console.error('Failed to remove item from favorites:', error);
@@ -85,7 +84,7 @@ export class BestStyleComponent {
       .subscribe({
         next: (response) => {
           console.log('Item added to favorites successfully');
-          product.isFavorite = true; // تعديل الحالة على الواجهة الأمامية مباشرة
+          product.isFavorite = true; 
         },
         error: (error) => {
           console.error('Failed to add item to favorites:', error);

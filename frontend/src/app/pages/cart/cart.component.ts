@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
     this.cartService.saveCartItem(cartId, amount).subscribe(
       (response: any) => {
         console.log('Item updated:', response.message);
-        this.loadCartItems(); // تحديث العناصر في الصفحة
+        this.loadCartItems(); // Update items on the page
       },
       (error) => {
         console.error('Error saving item:', error);
@@ -47,17 +47,7 @@ export class CartComponent implements OnInit {
     );
   }
 
-// verifyOrder(cartId: string): void {
-//   this.cartService.getDeliveryDetails(cartId).subscribe(
-//     (response: any) => {
-//       console.log('Delivery Details:', response);
-//       window.location.href = `/deliveryDetails?order=${cartId}`;
-//     },
-//     (error) => {
-//       console.error('Error fetching delivery details:', error);
-//     }
-//   );
-// }
+
 
 
   deleteItem(cartId: string): void {

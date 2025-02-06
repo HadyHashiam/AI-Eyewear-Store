@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  // نموذج التحقق من المدخلات باستخدام FormBuilder
+  // FormBuilder to render the form and verify
   signupForm;
 
   errorMessage: string = '';
@@ -28,31 +28,31 @@ export class SignupComponent {
   }
 
   onSignup() {
-    // التحقق من تطابق كلمة المرور مع تأكيد كلمة المرور
+    //  check the password is correct (is the same)?
     if (
       this.signupForm.value.password !== this.signupForm.value.confirmPassword
     ) {
-      this.errorMessage = 'كلمة المرور غير متطابقة';
+      this.errorMessage = " Password don't match ";
       return;
     }
 
     const { name, email, password } = this.signupForm.value;
 
-    // التأكد من أن القيم غير فارغة
     if (!name || !email || !password) {
-      this.errorMessage = 'من فضلك قم بتعبئة جميع الحقول';
+      this.errorMessage = 'Please enter All Fields';
       return;
     }
 
     this.authService.signup(name, email, password).subscribe({
       next: (response) => {
         console.log('Signup successful:', response);
-        // إعادة التوجيه إلى صفحة الدخول بعد التسجيل الناجح
+        // redirect to login page after successful Signup
         this.router.navigate(['/login']);
       },
       error: (error) => {
         console.error('Signup failed:', error);
-        this.errorMessage = 'حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقًا'; // إظهار رسالة الخطأ
+        this.errorMessage =
+          ' an error occurred while signing up , please try again';
       },
     });
   }

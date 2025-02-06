@@ -36,16 +36,16 @@ const adminRouter = require("./src/Modules/Admin/admin.route")
 // Connect with db
 dbConnection();
 
-// app.use(async (req, res, next) => {
-//   if (mongoose.connection.readyState !== 1) {
-//     await dbConnection(); // Wait until connected
-//   }
-//   next();
-// });
 app.use(express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
+app.use((req, res, next) => {
+  if (req.originalUrl === "/webhook") {
+    console.log("Skipping express.json() for webhook...");
+    next(); // We pass express.json() to the webhook     
+  } else {
+    express.json()(req, res, next);
+  }
+}); app.use(cookieParser());
 
 
 // compress all responses
