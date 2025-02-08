@@ -62,7 +62,7 @@ Before running the project, ensure you have the following installed:
 
 1. **Clone the repository:**  
    ```bash
-   git clone https://github.com/yourusername/IGlass.git
+   git clone https://github.com/HadyHashiam/AI-Eyewear-Store.git
    cd IGlass
    ```
 
@@ -78,9 +78,20 @@ Before running the project, ensure you have the following installed:
    - Create a `.env` file and add the following:
      ```env
      MONGO_URI=your_mongodb_connection_string
+     PORT=your_port  
      JWT_SECRET=your_jwt_secret
      STRIPE_SECRET_KEY=your_stripe_secret_key
      SNAPCHAT_API_KEY=your_snapchat_api_key
+     EMAIL_HOST=Your_Email_Host
+     EMAIL_PORT=Your_EMAIL_PORT
+     EMAIL_PASSWORD=your_EMAIL_PASSWORD
+     EMAIL_USER=your_EMAIL
+     success_url=in_Stripe_Payment
+     cancel_url=in_Stripe_Payment
+     STRIPE_PUBLISHABLE_KEY=stripe_p_Key
+     STRIPE_SECRET_KEY= stripe_s_Key
+     BASE_URL=(Backend)
+     BASE_URL2=(frontend)
      ```
    - Run the server:
      ```bash
