@@ -48,6 +48,17 @@
 - MongoDB (for local development)
 ---
 
+
+## **⚙️ Installation & Setup**
+
+### **Prerequisites:**
+- **Node.js** (v16+)
+- **MongoDB** (running locally or via MongoDB Atlas)
+- **Python 3.12.0 64-bit** (for AI model integration)
+---
+### **1. Clone the Repository:**
+
+
 ## **📂 Project Structure**
 Iglass/
 ├── frontend/           # Angular frontend
@@ -63,15 +74,6 @@ Iglass/
 └── README.md
 
 ---
-
-## **⚙️ Installation & Setup**
-
-### **Prerequisites:**
-- **Node.js** (v16+)
-- **MongoDB** (running locally or via MongoDB Atlas)
-- **Python 3.12.0 64-bit** (for AI model integration)
----
-### **1. Clone the Repository:**
 
 ```bash
 git clone https://github.com/your-username/Iglass.git
