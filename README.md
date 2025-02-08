@@ -148,7 +148,7 @@ For any inquiries or support:
 Junior Backend Developer  
 Email: [Hadyhashim17@gmail.com]  
 GitHub: [https://github.com/HadyHashiam](https://github.com/HadyHashiam)  
-LinkedIn: [https://www.linkedin.com/in/hady-hashim-09a9a022a/]([https://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/hady-hashim-09a9a022a/))
+LinkedIn: [https://www.linkedin.com/in/hady-hashim-09a9a022a/](https://www.linkedin.com/in/hady-hashim-09a9a022a/)
 
 ---
 
