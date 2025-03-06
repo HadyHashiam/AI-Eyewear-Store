@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddProductService } from '../../../services/add-product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -16,16 +17,20 @@ export class AddProductComponent {
   ];
   previewImage: string | ArrayBuffer | null = null;
   currentPage: string = '';
-
   selectedFaceShapes: string[] = [];
-  constructor(private router: Router) {}
+  selectedFile: File | null = null;
+  constructor(
+    private router: Router,
+    private addProductService: AddProductService
+  ) {}
   ngOnInit() {
-    this.currentPage = this.router.url.split('/')[1]; // استخراج اسم الصفحة الحالية
+    this.currentPage = this.router.url.split('/')[1]; // get the current page
   }
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.previewImage = URL.createObjectURL(file);
+      this.selectedFile = file; // save the selected file to use it in the form submission
+      this.previewImage = URL.createObjectURL(file); // display the image in the UI
       const input = event.target;
       const label = input.nextElementSibling;
       if (label) {
@@ -35,11 +40,33 @@ export class AddProductComponent {
   }
 
   onSubmit(form: any) {
-    if (form.valid) {
-      console.log(form.value);
-      // هنا يمكنك إرسال البيانات إلى الخادم أو إضافة المنتج
+    if (form.valid && this.selectedFile) {
+      const formData = new FormData();
+      formData.append('code', form.value.code);
+      formData.append('title', form.value.name);
+      formData.append('price', form.value.price);
+      formData.append('description', form.value.description);
+      formData.append('category', form.value.category);
+      formData.append('Quantity', form.value.Quantity);
+      formData.append('face_shape', JSON.stringify(form.value.face_shape)); // convert the array to a string and append it to the form data object
+      formData.append('image', this.selectedFile);
+
+      const formDataObj: Record<string, any> = {};
+      formData.forEach((value, key) => {
+        formDataObj[key] = value;
+      });
+      console.log(formDataObj);
+      this.addProductService.AddProduct(formData).subscribe({
+        next: (response) => {
+          console.log('Product added successfully:', response);
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          console.error('Error adding product:', err);
+        },
+      });
     } else {
-      alert('Please fill in all fields.');
+      alert('Please fill in all fields and select an image.');
     }
   }
 }

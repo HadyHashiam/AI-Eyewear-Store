@@ -30,63 +30,96 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { AddProductComponent } from './pages/dashboard/add-product/add-product.component';
 import { ManageOrdersComponent } from './pages/dashboard/manage-orders/manage-orders.component';
 import { ViewProductsComponent } from './pages/dashboard/view-products/view-products.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent, data: { title: 'Welcome' } },
-  { path: 'login', component: LoginComponent, data: { title: 'LogIn' } },
-  { path: 'signup', component: SignupComponent, data: { title: 'SignUp' } },
-  { path: 'logout', component: LogoutComponent, data: { title: 'logout' } },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'LogIn' },
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'SignUp' },
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Logout' },
+  },
   { path: 'home', component: HomeComponent, data: { title: 'Home' } },
   { path: 'aboutUs', component: AboutusComponent, data: { title: 'Aboutus' } },
-  { path: 'cart', component: CartComponent, data: { title: 'Cart' } },
-  { path: 'orders', component: OrderComponent, data: { title: 'Order' } },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Cart' },
+  },
+  {
+    path: 'orders',
+    component: OrderComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Orders' },
+  },
   {
     path: 'deliveryDetails',
     component: DeliveryDetailsComponent,
+    canActivate: [AuthGuard], // ✅
     data: { title: 'Deleviry Details' },
   },
   {
     path: 'bestStyle',
     component: BestStyleComponent,
+    canActivate: [AuthGuard], // ✅
+
     data: { title: 'Best Style' },
   },
   { path: 'error', component: ErrorComponent, data: { title: 'Error' } },
-{
-  path: 'dashboard',
-  component: DashboardComponent,
-  data: { title: 'Dashboard' },
-  children: [
-    {
-      path: 'addproduct',
-      component: AddProductComponent,
-      data: { title: 'Add Product' },
-    },
-    {
-      path: 'manageorder',
-      component: ManageOrdersComponent,
-      data: { title: 'Manage Order' },
-    },
-    {
-      path: 'view',
-      component: ViewProductsComponent,
-      data: { title: 'View Product' },
-    },
-  ],
-},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard], // ✅
+
+    data: { title: 'Dashboard' },
+    children: [
+      {
+        path: 'addproduct',
+        component: AddProductComponent,
+        data: { title: 'Add Product' },
+      },
+      {
+        path: 'manageorder',
+        component: ManageOrdersComponent,
+        data: { title: 'Manage Order' },
+      },
+      {
+        path: 'view',
+        component: ViewProductsComponent,
+        data: { title: 'View Product' },
+      },
+    ],
+  },
   {
     path: 'virtualTryOn',
     component: VirtualTryOnComponent,
+    canActivate: [AuthGuard], // ✅
+
     data: { title: 'Virtual Try On' },
   },
   {
     path: 'contactUs',
     component: ContactusComponent,
+    canActivate: [AuthGuard], // ✅
     data: { title: 'Contact Us' },
   },
   { path: '**', redirectTo: '/welcome' },
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,7 +153,7 @@ const routes: Routes = [
     NgSelectModule,
   ],
   exports: [RouterModule],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // تأكد من استيراد RouterModule
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser'; // استيراد Title
 import { HomeService } from '../../services/home.service';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
 import { FavoritesService } from '../../services/favorites.service';
 // import swiper
 
@@ -27,12 +29,14 @@ export class HomeComponent implements OnInit {
     { name: 'Women Sun Glasses' },
     { name: 'Kids Glasses' },
   ];
-  title: string = 'Home '; 
+  title: string = 'Home ';
   constructor(
     private titleService: Title,
     private homeService: HomeService,
     private cartService: CartService,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private authService: AuthService,
+    private router: Router // Use Router for routing
   ) {
     this.titleService.setTitle(this.title); // set title
   }
@@ -55,9 +59,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
-
-
   addToCart(product: any): void {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']); // Direct user to login page
+      return;
+    }
+
     if (product.isInCart) return;
     this.cartService
     .addToCart({
@@ -77,6 +84,10 @@ export class HomeComponent implements OnInit {
     });
   }
   toggleFavorite(product: any): void {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']); // Direct user to login page
+      return;
+    }
     if (product.isFavorite) {
       this.favoritesService.deleteFavItem(product._id).subscribe({
         next: (response) => {

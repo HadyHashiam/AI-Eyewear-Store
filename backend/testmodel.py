@@ -2,15 +2,26 @@ import tkinter as tk
 from tkinter import filedialog
 import pathlib
 import cv2
-import os
+import shutil
 import shutil
 from ultralytics import YOLO
 
 # Delete the directory                                                       path the predict file in runs 
-directory_to_delete = pathlib.Path('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\runs\\detect\\predict')      
-shutil.rmtree(directory_to_delete, ignore_errors=True)
+# BASE_DIR
+BASE_DIR = pathlib.Path(__file__).resolve().parent
+
+# Delete the directory                                                       path the predict file in runs 
+RUNS_DIR = BASE_DIR / "runs" / "detect" / "predict"
+# RUNS_DIR = BASE_DIR / "../runs/detect/predict"
+
+# Delete the folder if it exists.
+shutil.rmtree(RUNS_DIR, ignore_errors=True)
+
+#  path the YOLO model
+MODEL_PATH = BASE_DIR / "best.pt"
+
 # Load a pretrained YOLO model                                             path the YOLO model                    
-model = YOLO('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\best.pt')                                           
+model = YOLO(str(MODEL_PATH))  # Initialize the YOLO model
 
 def open_camera(callback):
     def on_left_click(event, x, y, flags, param):

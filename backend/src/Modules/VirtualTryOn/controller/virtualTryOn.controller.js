@@ -1,5 +1,6 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
+const path = require('path');
 const ApiError = require('../../../../utils/apiError');
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
@@ -46,15 +47,18 @@ const faceShapeMap = {
   "4": "Square"
 };
 
+const modelPath = path.join(__dirname, '../../../../testmodel.py');
+const PhotoPath = path.join(__dirname, '../../../../runs/detect/predict/labels/photo.txt');
+
 exports.postRunDetection = asyncHandler(async (req, res, next) => {
 
   const userId = getUserIdFromToken(req);
-  const pythonProcess = spawn('python', ['testmodel.py']);
+  const pythonProcess = spawn('python', [modelPath]);
   pythonProcess.on('close', async (code) => {
     if (code === 0) {
       console.log('Python script executed successfully');
       try {
-        fs.readFile('E:\\Programming\\Back-end\\Node.js\\final project\\backend\\runs\\detect\\predict\\labels\\photo.txt', 'utf8', (err, data) => {
+        fs.readFile(PhotoPath, 'utf8', (err, data) => {
           if (err) {
             console.error('Error reading prediction file:', err);
             return next(new ApiError('Error reading prediction file', 500)); // Send API error

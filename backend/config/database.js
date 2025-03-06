@@ -5,9 +5,10 @@ dotenv.config({ path: '.env' });
 // mongoose.set('strictQuery', false);
 const dbConnection = () => {
   mongoose
-    .connect("mongodb://localhost:27017/New-I-Glass-25")
+    .connect(process.env.MONGO_URL)
     .then((conn) => {
-      console.log(`Database Connected: ${conn.connection.host}`);
+      // console.log(`Database Connected: ${conn.connection.host}`);
+      console.log(`Database Connected: Succesfully`);
     })
   // .catch((err) => {
   //   console.error(`Database Error: ${err}`);

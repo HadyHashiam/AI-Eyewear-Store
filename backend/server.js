@@ -36,7 +36,11 @@ const adminRouter = require("./src/Modules/Admin/admin.route")
 // Connect with db
 dbConnection();
 
-app.use(express.static(path.join(__dirname, 'images')));
+app.use('/images', (req, res, next) => {
+  console.log("Requested Image Path:", req.path);
+  next();
+}, express.static(path.join(__dirname, "images")));
+
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   if (req.originalUrl === "/webhook") {

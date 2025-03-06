@@ -54,7 +54,7 @@ exports.postlogin = asyncHandler(async (req, res, next) => {
       res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 24 * 60 * 60 * 1000, 
+        maxAge: 24 * 60 * 60 * 1000,
       });
 
       res.status(200).json({ data: user, token });
@@ -67,27 +67,44 @@ exports.postlogin = asyncHandler(async (req, res, next) => {
 
 
 
-exports.cookieJwtAuth = async (req, res, next) => {
-  // Get token from cookies
-  const token = req.cookies.token;
+exports.PostLogout = asyncHandler(async (req, res, next) => {
+  console.log('logout open');
+  let valueOfsubmit = req.body.submit;
 
-  if (!token) return next(new ApiError('You are not logged in', 401));
-  try {
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    // Check if user exists
-    const currentUser = await User.findById(decoded.userId);
-    if (!currentUser) {
-      return next(new ApiError('The user belonging to this token does no longer exist', 401));
-    }
-    // Attach user to request
-    req.user = currentUser;
-    next();
-  } catch (err) {
-    return next(new ApiError('Invalid token, please log in again', 401));
+  if (valueOfsubmit === "Yes") {
+    console.log("yes");
+
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ status: 'error', message: 'Failed to log out' });
+      }
+
+      res.clearCookie('token', { path: '/', httpOnly: true, sameSite: 'None', secure: true });
+      res.clearCookie('connect.sid', { path: '/', httpOnly: true, sameSite: 'None', secure: true }); // حذف كوكي السيشن أيضاً
+      return res.status(200).json({ status: 'success', message: 'Logged out successfully' });
+    });
+
+  } else if (valueOfsubmit === "Cancel") {
+    return res.status(200).json({ status: 'cancelled', message: 'Cancelled logout' });
   }
-};
+});
 
+
+exports.TestCookie = asyncHandler(async (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    console.log("req.session.user :", req.session.user)
+    console.log("req.headers.cookie :", req.headers.cookie)
+    if (!token) {
+      return res.status(401).json({ message: 'No token found in cookies' });
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const userId = decoded.userId;
+    res.json({ message: 'Token is valid', userId, token: token });
+  } catch (err) {
+    res.status(401).json({ message: 'Invalid token', error: err.message });
+  }
+})
 
 
 // @desc   make sure the user is logged in
@@ -303,23 +320,3 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 
 
 
-exports.postlogout = (req, res, next) => {
-  let valueOfsubmit = req.body.submit
-  if (valueOfsubmit == "Yes") {
-    console.log("yes")
-    res.status(200).clearCookie('token').redirect("/");
-  } else if (valueOfsubmit == "Cancel") {
-    res.status(200).redirect("/home");
-    console.log("cancel")
-  } else {
-    console.log(valueOfsubmit)
-    console.log("error here")
-    res.redirect("/logout");
-  }
-};
-
-
-// router.post('/logout', (req, res) => {
-//   res.clearCookie('token');
-//   res.status(200).json({ status: 'success', message: 'Logged out successfully' });
-// });
